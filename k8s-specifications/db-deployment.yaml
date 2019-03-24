@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+   
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appdb: db
+  template:
+    metadata:
+      labels:
+        appdb: db
+    spec:
+      containers:
+      - image: mariadb
+        name: dj-mariadb
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: hED522QC@pwDR$n+
+          name: MYSQL_USER
+          value: domjudge
+          name: MYSQL_PASSWORD
+          value: _D-F%X2KfKNSqCQB
+          name: MYSQL_DATABASE
+          value: domjudge
+        volumeMounts:
+        - mountPath: /var/lib/mariadb
+          name: data
+      volumes:
+      - name: data
+        emptyDir: {} 

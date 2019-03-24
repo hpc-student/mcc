@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  labels:
+    appc: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appc: client
+  template:
+    metadata:
+      labels:
+        appc: client
+    spec:
+      containers:
+      - name: domserver
+        image: domjudge/domserver:latest 
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: hED522QC@pwDR$n+
+          name: MYSQL_USER
+          value: domjudge
+          name: MYSQL_PASSWORD
+          value: _D-F%X2KfKNSqCQB
+          name: MYSQL_DATABASE
+          value: domjudge
+          name: MYSQL_HOST
+          value: mariadb 
+
+        ports:
+        - containerPort: 80
+          name: web-port
+
+        volumeMounts:
+        - mountPath: /sys/fs/cgroup
+          name: client-volume
+      volumes:
+      - name: client-volume
+        hostPath:
+          path: /sys/fs/cgroup
+          #          type: DirectoryOrCreate
+
