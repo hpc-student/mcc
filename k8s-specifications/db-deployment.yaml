@@ -21,11 +21,11 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: hED522QC@pwDR$n+
-          name: MYSQL_USER
+        - name: MYSQL_USER
           value: domjudge
-          name: MYSQL_PASSWORD
+        - name: MYSQL_PASSWORD
           value: _D-F%X2KfKNSqCQB
-          name: MYSQL_DATABASE
+        - name: MYSQL_DATABASE
           value: domjudge
         volumeMounts:
         - mountPath: /var/lib/mariadb
